@@ -6,7 +6,7 @@
 #    By: stmartin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/04 14:21:39 by stmartin          #+#    #+#              #
-#    Updated: 2016/04/18 17:38:07 by stmartin         ###   ########.fr        #
+#    Updated: 2016/04/19 16:35:46 by stmartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIB_PATH = ./libft/ ./minilibx_macos/
 
 FRAMEWORK = -framework OpenGL -framework Appkit
 
-SRC_NAME =
+SRC_NAME = main.c mlx_tools.c put_image.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = -lft -lmlx
