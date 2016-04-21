@@ -6,71 +6,66 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/19 23:33:11 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/21 16:39:53 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "fractinc.h"
 
-unsigned long	colorrgb(int r, int g, int b)
-{
-	return ((r & 0xff) << 16 ) + ((g & 0xff) << 8) + (b & 0xff);
-}
+
 
 void			fractal(t_env *e, int i)
 {
+	t_co	al;
 	float	tmp;
-	//int		zoom_x;
-	//int		zoom_y;
-	float	c_r;
-	float	c_i;
-	float	z_r;
-	float	z_i;
-	float	zoom;
-	e->x1 = -1.6;
-	e->x2 = 1;
-	e->y1 = -0.95;
-	e->y2 = 1.4;
-	zoom = 320;
-	//zoom_x = WIN_X / (e->x2 - e->x1);
-	//zoom_y = WIN_Y / (e->y2 - e->y1);
-	e->y = 0;
-	while (e->y < WIN_Y)
+	e->v.x1 = -1.6;
+	e->v.x2 = 1;
+	e->v.y1 = -0.95;
+	e->v.y2 = 1.4;
+	e->v.y = 0;
+	while (e->v.y < WIN_Y)
 	{
-		e->x = 0;
-		while(e->x < WIN_X)
+		e->v.x = 0;
+		while(e->v.x < WIN_X)
 		{
-			z_r = e->x / zoom + e->x1;
-			z_i = e->y / zoom + e->y1;
-			c_r = -0.7;
-			c_i = 0.27015;
+			al.z_r = e->v.x / e->v.zoom + e->v.x1 + e->mx;
+			al.z_i = e->v.y / e->v.zoom + e->v.y1 + e->my;
+			al.c_r = -0.7;
+			al.c_i = 0.27015;
 			i = 0;
-			while (z_r * z_r + z_i * z_i < 4 && i < ITER_MAX)
+			while (al.z_r * al.z_r + al.z_i * al.z_i < 4 && i < ITER_MAX)
 			{
-				tmp = z_r;
-				z_r = z_r * z_r - z_i * z_i + c_r;
-				z_i = 2 * z_i * tmp + c_i;
-				//image_put_pixel(e->img.i, x, y, e->color);
+				tmp = al.z_r;
+				al.z_r = al.z_r * al.z_r  - al.z_i * al.z_i + al.c_r;
+				al.z_i = 2 * al.z_i * tmp + al.c_i;
 				i++;
 			}
 			if (i == ITER_MAX)
 			{
-				printf("in %d %d\n", e->x, e->y);
-				mlx_pixel_put(e->mlx, e->win, e->x, e->y, colorrgb(0, (i * 255) / ITER_MAX, 0));
-				//image_put_pixel(e->img.i, x, y, colorrgb(i * 255 / ITER_MAX, 0, 0));
+//				printf("in %d %d\n", e->v.x, e->v.y);
+				mlx_pixel_put(e->mlx, e->win, e->v.x, e->v.y, 0);
+				//image_put_pixel(e->img.i, e->v.x, e->v.y, 0xff);
 			}
 			else
-			{
-				printf("%d %d\n", e->x, e->y);
-			//	e->color = colorrgb(i * 255 / ITER_MAX, 0, 0);
-			//	mlx_pixel_put(e->mlx, e->win, e->x, e->y, 0x00FF);
-			}
-			e->x++;
+				mlx_pixel_put(e->mlx, e->win, e->v.x, e->v.y, colorrgb(i * 255
+				/ ITER_MAX, i * 255 / ITER_MAX, i * 255 / ITER_MAX));
+			e->v.x++;
 		}
-		e->y++;
+		e->v.y++;
 	}
-	//mlx_put_image_to_window(e->mlx, e->win, e->img.i, 0, 0);
+}
+
+void			move_map(int keycode, t_env *e)
+{
+	if (keycode == 91)
+		e->my -= 100 / e->v.zoom;
+	if (keycode == 84)
+		e->my += 100 / e->v.zoom;
+	if (keycode == 88)
+		e->mx += 100 / e->v.zoom;
+	if (keycode == 86)
+		e->mx -= 100 / e->v.zoom;
 }
 
 int				key_hook(int keycode, void *env)
@@ -80,12 +75,18 @@ int				key_hook(int keycode, void *env)
 	(void)e;
 	if (keycode == 53)
 		exit(1);
+	if (keycode == 69)
+		e->v.zoom *= 2;
+	if (keycode == 78 && e->v.zoom > 100)
+		e->v.zoom /= 2;
+	move_map(keycode, e);
+	printf("kc %d zm %f\n", keycode,e->v.zoom);
 	expose_hook(e);
 	return (0);
 }
 
-/*
-static void		clear_image(t_env *e)
+
+/*static void		clear_image(t_env *e)
 {
 	int		y;
 
@@ -95,14 +96,14 @@ static void		clear_image(t_env *e)
 		e->img.data[y] = 0;
 		y++;
 	}
-}
-*/
+}*/
+
 int				expose_hook(t_env *e)
 {
-	//clear_image(e);
+//	clear_image(e);
 	fractal(e, 0);
-	printf("%f\n", e->x1);
-	mlx_clear_window(e->mlx, e->win);
-	//mlx_put_image_to_window(e->mlx, e->win, e->img.i, 0, 0);
+//	printf("%f\n", e->v.x1);
+//	mlx_clear_window(e->mlx, e->win);
+//	mlx_put_image_to_window(e->mlx, e->win, e->img.i, 0, 0);
 	return (0);
 }

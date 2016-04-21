@@ -6,11 +6,16 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:33:34 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/19 16:40:03 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/21 16:40:33 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractinc.h"
+#include <stdio.h>
+unsigned long	colorrgb(int r, int g, int b)
+{
+	return ((r & 0xff) << 8) + ((g & 0xff) << 4) + ((b & 0xff) << 2);
+}
 
 void			image_put_pixel(t_image *i, int x, int y, int color)
 {

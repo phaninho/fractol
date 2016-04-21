@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/19 19:30:42 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/21 16:12:34 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int			main(int ac, char **av)
 {
 	static t_env	e;
 
+	e.v.zoom = 320;
+	e.mx = 0;
+	e.my = 0;
 	e.color = 0x00FF;
 	if (ac != 2)
 	{
