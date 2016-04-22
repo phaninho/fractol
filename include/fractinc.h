@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/21 16:15:42 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/22 15:39:00 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 # define WIN_X 1000
 # define WIN_Y 1100 / 16 * 9
-# define ITER_MAX 50
 
 typedef struct			s_image
 {
@@ -34,6 +33,7 @@ typedef struct			s_image
 
 typedef struct			s_co
 {
+	int			it_max;
 	float		zoom;
 	int			x;
 	int			y;
@@ -58,6 +58,8 @@ typedef struct			s_env
 	int			color;
 }						t_env;
 
+int				mouse_hook(int button, int x, int y, void *param);
+int				mouse_motion(int button, int x, int y, void *param);
 unsigned long	colorrgb(int r, int g, int b);
 int				key_hook(int keycode, void *env);
 int				expose_hook(t_env *e);
