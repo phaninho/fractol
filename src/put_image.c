@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:33:34 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/25 15:24:49 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/25 16:54:24 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ unsigned long	colorrgb(int r, int g, int b)
 
 void			image_put_pixel(t_image *i, int x, int y, unsigned long color)
 {
-	//printf("bpp: %d szlin: %d\n", x*(i->bpp), y * i->szline);
-	//if (x <= 0 || y <= 0 || x >= WIN_X || y >= WIN_Y)
-	//	return ;
-//	if ((x * i->bpp / 8) + (y * i->szline) < 0 || (x * i->bpp / 8) +
-//			(y * i->szline) > (i->szline * WIN_Y) - 1)
-//		return ;
 	if (i->endian)
 	{
 		i->data[(x * i->bpp / 8) + (y * i->szline)] = color / 65536 % 256;

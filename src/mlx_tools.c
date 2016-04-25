@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/25 15:28:26 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/25 17:26:03 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void			fractal(t_env *e, int i)
 	e->v.y1 = -0.95;
 	e->v.y2 = 1.4;
 	e->v.y = 0;
+	//e->v.ch_c = 0;
 	while (e->v.y < WIN_Y)
 	{
 		e->v.x = 0;
@@ -31,7 +32,7 @@ void			fractal(t_env *e, int i)
 		{
 			al.z_r = e->v.x / e->v.zoom + e->v.x1 + e->mx;
 			al.z_i = e->v.y / e->v.zoom + e->v.y1 + e->my;
-			al.c_r = -0.7;
+			al.c_r = -0.7 /*+ e->v.ch_c*/;
 			al.c_i = 0.27015;
 			i = 0;
 			while (al.z_r * al.z_r + al.z_i * al.z_i < 4 && i < e->v.it_max)
@@ -75,6 +76,7 @@ int				mouse_hook(int button, int x, int y, void *env)
 		e->v.zoom /= 2;
 	(void)x;
 	(void)y;
+	expose_hook(e);
 	return (0);
 }
 
@@ -83,10 +85,16 @@ int				mouse_motion(int x, int y, int bpp, void *env)
 {
 	t_env	*e;
 	e = (t_env *)env;
-	printf("bt %d bt2 %d bt3 %d\n", x, y, bpp);
+	if (x > 0 && x < WIN_X && y > 0 && y < WIN_Y)
+	{
+	//	if (x > WIN_X / 2 && y > WIN_Y / 2)
+	//		e->v.ch_c += 1;
+	//	if (x > WIN_X / 2)
+	//		e->v.c_r += x / 100;
+		printf("bt %d bt2 %d bt3 %d\n", x, y, bpp);
+	}
 	
-	(void)x;
-	(void)y;
+	//expose_hook(e);
 	return (0);
 }
 
@@ -94,8 +102,6 @@ int				key_hook(int keycode, void *env)
 {
 	t_env	*e;
 	e = (t_env *)env;
-	(void)e;
-	
 
 	if (keycode == 53)
 		exit(1);
@@ -128,7 +134,7 @@ int				expose_hook(t_env *e)
 	clear_image(e);
 	fractal(e, 0);
 //	printf("%f\n", e->v.x1);
-	//mlx_clear_window(e->mlx, e->win);
+	mlx_clear_window(e->mlx, e->win);
 	mlx_put_image_to_window(e->mlx, e->win, e->img.i, 0, 0);
 	return (0);
 }
