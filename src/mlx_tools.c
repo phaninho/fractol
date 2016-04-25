@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/22 17:13:56 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/25 14:43:51 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,9 @@ void			fractal(t_env *e, int i)
 				i++;
 			}
 			if (i == e->v.it_max)
-			{
-//				printf("in %d %d\n", e->v.x, e->v.y);
-				mlx_pixel_put(e->mlx, e->win, e->v.x, e->v.y, 0);
-				//image_put_pixel(e->img.i, e->v.x, e->v.y, 0xff);
-			}
+				image_put_pixel(&(e->img), e->v.x, e->v.y, 0);
 			else
-				mlx_pixel_put(e->mlx, e->win, e->v.x, e->v.y, colorrgb(i * 255
+				image_put_pixel(&(e->img), e->v.x, e->v.y, colorrgb(i * 255
 				/ e->v.it_max, i * 255 / e->v.it_max, i * 255 / e->v.it_max));
 			e->v.x++;
 		}
@@ -72,24 +68,25 @@ int				mouse_hook(int button, int x, int y, void *env)
 {
 	t_env	*e;
 	e = (t_env *)env;
-	printf("bt %d\n", button);
-	
-	(void)x;
-	(void)y;
-	return (0);
-}
-
-
-int				mouse_motion(int button, int x, int y, void *env)
-{
-	t_env	*e;
-	e = (t_env *)env;
+	(void)e;
 	printf("bt %d\n", button);
 	if (button == 5)
 		e->v.zoom *= 2;
 	if (button == 4 && e->v.zoom > 50)
 		e->v.zoom /= 2;
 
+	(void)x;
+	(void)y;
+	return (0);
+}
+
+
+int				mouse_motion(int x, int y, int bpp, void *env)
+{
+	t_env	*e;
+	e = (t_env *)env;
+	printf("bt %d bt2 %d bt3 %d\n", x, y, bpp);
+	
 	(void)x;
 	(void)y;
 	return (0);
@@ -102,9 +99,10 @@ int				key_hook(int keycode, void *env)
 	(void)e;
 	if (keycode == 53)
 		exit(1);
-		if (keycode == 67)
+	if (keycode == 67)
 		e->v.it_max += 10;
-	if (keycode == 75 && e->v.it_max > 0)
+	printf("%d\n", e->v.it_max);
+	if (e->v.it_max > 11 && keycode == 75)
 		e->v.it_max -= 10;
 	move_map(keycode, e);
 	printf("kc %d zm %f\n", keycode,e->v.zoom);
@@ -127,10 +125,10 @@ int				key_hook(int keycode, void *env)
 
 int				expose_hook(t_env *e)
 {
-//	clear_image(e);
+	//clear_image(e);
 	fractal(e, 0);
 //	printf("%f\n", e->v.x1);
-//	mlx_clear_window(e->mlx, e->win);
-	//mlx_put_image_to_window(e->mlx, e->win, e->img.i, 0, 0);
+	//mlx_clear_window(e->mlx, e->win);
+	mlx_put_image_to_window(e->mlx, e->win, e->img.i, 0, 0);
 	return (0);
 }
