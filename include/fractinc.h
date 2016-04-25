@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/25 17:21:13 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/25 18:44:16 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct			s_co
 	float		c_i;
 	float		z_r;
 	float		z_i;
-	float		ch_c;
+	float		c_c;
 }						t_co;
 
 typedef struct			s_env
