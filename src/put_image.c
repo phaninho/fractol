@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:33:34 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/25 14:10:47 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/25 15:24:49 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void			image_put_pixel(t_image *i, int x, int y, unsigned long color)
 //		return ;
 	if (i->endian)
 	{
-		i->data[(x * i->bpp / 8) + (y * i->szline)] = color;
-		i->data[(x * i->bpp / 8) + 1 + (y * i->szline)] = color;
-		i->data[(x * i->bpp / 8) + 2 + (y * i->szline)] = color;
+		i->data[(x * i->bpp / 8) + (y * i->szline)] = color / 65536 % 256;
+		i->data[(x * i->bpp / 8) + 1 + (y * i->szline)] = color / 256 % 256;
+		i->data[(x * i->bpp / 8) + 2 + (y * i->szline)] = color % 256;
 	}
 	else
 	{
-		i->data[(x * i->bpp / 8) + 2 + (y * i->szline) ] = color;
-		i->data[(x * i->bpp / 8) + 1 + (y * i->szline)] = color;
-		i->data[(x * i->bpp / 8) + (y * i->szline)] = color;
+		i->data[(x * i->bpp / 8) + 2 + (y * i->szline) ] = color / 65536 % 256;
+		i->data[(x * i->bpp / 8) + 1 + (y * i->szline)] = color / 256 % 256;
+		i->data[(x * i->bpp / 8) + (y * i->szline)] = color % 256;
 	}
 }

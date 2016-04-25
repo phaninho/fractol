@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/25 14:43:51 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/25 15:28:26 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ void			fractal(t_env *e, int i)
 			if (i == e->v.it_max)
 				image_put_pixel(&(e->img), e->v.x, e->v.y, 0);
 			else
-				image_put_pixel(&(e->img), e->v.x, e->v.y, colorrgb(i * 255
-				/ e->v.it_max, i * 255 / e->v.it_max, i * 255 / e->v.it_max));
+				image_put_pixel(&(e->img), e->v.x, e->v.y, colorrgb(i * 255 /  e->v.it_max, i * 255 / e->v.it_max, i * 255 / e->v.it_max));
 			e->v.x++;
 		}
 		e->v.y++;
@@ -74,7 +73,6 @@ int				mouse_hook(int button, int x, int y, void *env)
 		e->v.zoom *= 2;
 	if (button == 4 && e->v.zoom > 50)
 		e->v.zoom /= 2;
-
 	(void)x;
 	(void)y;
 	return (0);
@@ -97,6 +95,8 @@ int				key_hook(int keycode, void *env)
 	t_env	*e;
 	e = (t_env *)env;
 	(void)e;
+	
+
 	if (keycode == 53)
 		exit(1);
 	if (keycode == 67)
@@ -111,7 +111,7 @@ int				key_hook(int keycode, void *env)
 }
 
 
-/*static void		clear_image(t_env *e)
+static void		clear_image(t_env *e)
 {
 	int		y;
 
@@ -121,11 +121,11 @@ int				key_hook(int keycode, void *env)
 		e->img.data[y] = 0;
 		y++;
 	}
-}*/
+}
 
 int				expose_hook(t_env *e)
 {
-	//clear_image(e);
+	clear_image(e);
 	fractal(e, 0);
 //	printf("%f\n", e->v.x1);
 	//mlx_clear_window(e->mlx, e->win);
