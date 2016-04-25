@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/25 19:32:47 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/25 19:35:09 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			fractal(t_env *e, int i)
 			while (al.z_r * al.z_r + al.z_i * al.z_i < 4 && i < e->v.it_max)
 			{
 				tmp = al.z_r;
-				al.z_r = al.z_r * al.z_r  - al.z_i * al.z_i + al.c_r + e->v.c_c;
+				al.z_r = al.z_r * al.z_r  - al.z_i * al.z_i + al.c_r /*+ e->v.c_c*/;
 				al.z_i = 2 * al.z_i * tmp + al.c_i;
 				i++;
 			}
