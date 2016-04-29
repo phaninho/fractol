@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/25 18:44:16 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/29 20:56:43 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,18 @@ typedef struct			s_co
 	float		c_c;
 }						t_co;
 
+typedef struct			s_tmp
+{
+	float		tx1;
+	float		tx2;
+	float		ty1;
+	float		ty2;
+}						t_tmp;
+
 typedef struct			s_env
 {
+	int			ctx;
+	int			cty;
 	float		mx;
 	float		my;
 	void		*mlx;
@@ -59,11 +69,12 @@ typedef struct			s_env
 	int			color;
 }						t_env;
 
-int				mouse_hook(int button, int x, int y, void *param);
-int				mouse_motion(int x, int y, int bpp, void *param);
+int				mouse_hook(int button, int x, int y, t_env *param);
+int				mouse_motion(int x, int y, int bpp, t_env *param);
 unsigned long	colorrgb(int r, int g, int b);
 int				key_hook(int keycode, void *env);
 int				expose_hook(t_env *e);
 void			image_put_pixel(t_image *i, int x, int y, unsigned long color);
+void			julia(t_env *e);
 
 #endif
