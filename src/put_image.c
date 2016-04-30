@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:33:34 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/29 21:09:20 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/29 22:21:43 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 unsigned long	colorrgb(int r, int g, int b)
 {
-	return ((r & 0xff) << 3) + ((g & 0xff) << 12) + ((b & 0xff) << 18);
+	return ((r & 0xff) << 2) + ((g & 0xff) << 8) + ((b & 0xff) << 20);
 }
 
 void			image_put_pixel(t_image *i, int x, int y, unsigned long color)

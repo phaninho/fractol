@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/29 21:10:16 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/04/30 13:34:38 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			fractal(t_env *e, int i)
 {
 	float	tmp;
 
-		printf("retour x1: %f x2: %f\ny1: %f y2: %f\n", e->v.x1, e->v.x2, e->v.y1, e->v.y2);
+	printf("retour x1: %f x2: %f\ny1: %f y2: %f\n", e->v.x1, e->v.x2, e->v.y1, e->v.y2);
 	e->v.y = 0;
 	while (e->v.y < WIN_Y)
 	{
@@ -31,6 +31,7 @@ void			fractal(t_env *e, int i)
 			i = 0;
 			while (e->v.z_r * e->v.z_r + e->v.z_i * e->v.z_i < 4 && i < e->v.it_max)
 			{
+				e->ret == 2 ? mandelbrot(e) : 1;
 				tmp = e->v.z_r;
 				e->v.z_r = e->v.z_r * e->v.z_r  - e->v.z_i * e->v.z_i + e->v.c_r;
 				e->v.z_i = 2 * e->v.z_i * tmp + e->v.c_i;
