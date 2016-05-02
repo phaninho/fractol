@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/30 13:34:38 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/02 19:34:30 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			fractal(t_env *e, int i)
 			i = 0;
 			while (e->v.z_r * e->v.z_r + e->v.z_i * e->v.z_i < 4 && i < e->v.it_max)
 			{
-				e->ret == 2 ? mandelbrot(e) : 1;
+				e->ret == 2 ? mandelbrot(e) : julia(e);
 				tmp = e->v.z_r;
 				e->v.z_r = e->v.z_r * e->v.z_r  - e->v.z_i * e->v.z_i + e->v.c_r;
 				e->v.z_i = 2 * e->v.z_i * tmp + e->v.c_i;
@@ -111,19 +111,15 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 }
 
 
-int				mouse_motion(int x, int y, int ad, t_env *e)
+int				mouse_motion(int x, int y, t_env *e)
 {
 	(void)e;
 	if (x > 0 && x < WIN_X && y > 0 && y < WIN_Y)
 	{
-		//if (x > WIN_X / 2 && y > WIN_Y / 2)
-		//	e->v.c_c = (x + y) * 0.001;
-	//	if (x > WIN_X / 2)
-	//		e->v.c_r += x / 100;
-		printf("bt %d bt2 %d bt3 %d\n", x, y, ad);
+		e->msx = x - (WIN_X / 2);
+		e->msy = y - (WIN_Y / 2);
 	}
-	
-	//expose_hook(e);
+	expose_hook(e);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/04/30 12:51:44 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/02 18:54:45 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		call_fonction(t_env e)
 	e.img.i = mlx_new_image(e.mlx, WIN_X, WIN_Y);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_mouse_hook(e.win, mouse_hook, &e);
-	mlx_hook(e.win, 6, 1 << 6, mouse_motion, &e);
+	mlx_hook(e.win, 6, 1L << 6, mouse_motion, &e);
 	mlx_hook(e.win, 2, 1L << 0, key_hook, &e);
 	e.img.data = mlx_get_data_addr(e.img.i, &(e.img.bpp), &(e.img.szline), 
 			&(e.img.endian));
