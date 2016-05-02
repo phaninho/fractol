@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/02 19:34:30 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/02 20:02:04 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void			fractal(t_env *e, int i)
 
 void			move_map(int keycode, t_env *e)
 {
-	if (keycode == 91)
+	if (keycode == 126)
 		e->my -= 100 / e->v.zoom;
-	if (keycode == 84)
+	if (keycode == 125)
 		e->my += 100 / e->v.zoom;
-	if (keycode == 88)
+	if (keycode == 124)
 		e->mx += 100 / e->v.zoom;
-	if (keycode == 86)
+	if (keycode == 123)
 		e->mx -= 100 / e->v.zoom;
 }
 
@@ -125,14 +125,15 @@ int				mouse_motion(int x, int y, t_env *e)
 
 int				key_hook(int keycode, void *env)
 {
+	printf("%d\n", keycode);
 	t_env	*e;
 	e = (t_env *)env;
 
 	if (keycode == 53)
 		exit(1);
-	if (keycode == 67)
+	if (keycode == 24)
 		e->v.it_max += 10;
-	if (e->v.it_max > 11 && keycode == 75)
+	if (e->v.it_max > 11 && keycode == 27)
 		e->v.it_max -= 10;
 	move_map(keycode, e);
 	expose_hook(e);
