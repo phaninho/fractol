@@ -6,7 +6,7 @@
 #    By: stmartin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/04 14:21:39 by stmartin          #+#    #+#              #
-#    Updated: 2016/04/19 16:35:46 by stmartin         ###   ########.fr        #
+#    Updated: 2016/04/30 13:40:38 by stmartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIB_PATH = ./libft/ ./minilibx_macos/
 
 FRAMEWORK = -framework OpenGL -framework Appkit
 
-SRC_NAME = main.c mlx_tools.c put_image.c
+SRC_NAME = main.c mlx_tools.c put_image.c fractal.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = -lft -lmlx
@@ -29,7 +29,7 @@ INC = $(addprefix -I,$(INC_PATH))
 LIB = $(addprefix -L,$(LIB_PATH))
 
 CC = gcc -g
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Ofast
 
 all: lib
 	@echo "\033[37;44m Make $(NAME) \033[0m"
