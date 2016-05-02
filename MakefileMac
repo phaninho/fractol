@@ -6,16 +6,16 @@
 #    By: stmartin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/04 14:21:39 by stmartin          #+#    #+#              #
-#    Updated: 2016/03/15 18:36:24 by stmartin         ###   ########.fr        #
+#    Updated: 2016/04/30 13:40:38 by stmartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
-INC_PATH = ./include/ ./libft ./minilibx/
-LIB_PATH = ./libft/ ./minilibx/
+INC_PATH = ./include/ ./libft ./minilibx_macos/
+LIB_PATH = ./libft/ ./minilibx_macos/
 
-FRAMEWORK = -lXext -lX11 -lm
+FRAMEWORK = -framework OpenGL -framework Appkit
 
 SRC_NAME = main.c mlx_tools.c put_image.c fractal.c
 
@@ -29,7 +29,7 @@ INC = $(addprefix -I,$(INC_PATH))
 LIB = $(addprefix -L,$(LIB_PATH))
 
 CC = gcc -g
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Ofast
 
 all: lib
 	@echo "\033[37;44m Make $(NAME) \033[0m"
@@ -40,14 +40,14 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(INC) -o $@ -c $< $(LIB) $(LIB_NAME) 
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 .PHONY: lib clean fclean re
 
 lib:
 	@echo "\033[37;44m Make libft \033[0m"
 	@make -C ./libft/
 	@echo "\033[37;44m Make minilibx \033[0m"
-	@make -C ./minilibx/
+	@make -C ./minilibx_macos/
 
 clean:
 	rm -rf $(OBJ) $(OBJ_PATH)
@@ -55,7 +55,12 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	@make -C ./libft/ fclean
-	@make -C ./minilibx/ clean
+	@make -C ./minilibx_macos/ clean
 
 re: fclean
 	@$(MAKE) all
+
+norme :
+	norminette ./libft/*
+	norminette ./src/*
+	norminette ./include/*
