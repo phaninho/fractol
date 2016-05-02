@@ -19,8 +19,8 @@
 # include <mlx.h>
 # include <stdlib.h>
 
-# define WIN_X 1000
-# define WIN_Y 1000 / 16 * 9
+# define WIN_X 400
+# define WIN_Y 400 / 16 * 9
 
 typedef struct			s_image
 {
@@ -58,6 +58,7 @@ typedef struct			s_tmp
 
 typedef struct			s_env
 {
+	int			ehk;
 	int			ret;
 	int			ctx;
 	int			cty;

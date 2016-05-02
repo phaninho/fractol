@@ -19,7 +19,6 @@ void			fractal(t_env *e, int i)
 {
 	float	tmp;
 
-	printf("retour x1: %f x2: %f\ny1: %f y2: %f\n", e->v.x1, e->v.x2, e->v.y1, e->v.y2);
 	e->v.y = 0;
 	while (e->v.y < WIN_Y)
 	{
@@ -88,8 +87,7 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 	t.ty2 = e->v.y2;
 	x1 = xinit(e, x);
 	y1 = yinit(e, y);
-	printf("bt %d x: %d y: %d\n", button, x, y);
-	if (button == 5 && e->v.zoom < 30000000)
+	if (button == 1 && e->v.zoom < 30000000)
 	{
 		e->v.zoom *= 1.1;
 		//e->ctx = x / 2;
@@ -98,11 +96,10 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 		e->v.x2 = x1 + ((t.tx2 - t.tx1) / 4);
 		e->v.y1 = y1 - ((t.ty2 - t.ty1) / 4);
 		e->v.y2 = y1 + ((t.ty2 - t.ty1) / 4);
-		printf("test x1: %f x2: %f\ny1: %f y2: %f\n", e->v.x1, e->v.x2, e->v.y1, e->v.y2);
 		//e->v.x += 100; /*e->v.x / e->v.zoom / 2.51*/
 		//e->v.y += 100; /*e->v.y / e->v.zoom / 2.51*/
 	}
-	if (button == 4 && e->v.zoom > 50)
+	if (button == 3 && e->v.zoom > 50)
 		e->v.zoom /= 1.1;
 	(void)x;
 	(void)y;
@@ -119,21 +116,31 @@ int				mouse_motion(int x, int y, t_env *e)
 		e->msx = x - (WIN_X / 2);
 		e->msy = y - (WIN_Y / 2);
 	}
-	expose_hook(e);
+	if (!e->ehk)
+		expose_hook(e);
 	return (0);
 }
 
 int				key_hook(int keycode, void *env)
 {
-	printf("%d\n", keycode);
+		printf("%d\n", keycode);
 	t_env	*e;
 	e = (t_env *)env;
-
+	if (e->ehk == 0 && keycode == 112)
+	{
+		printf("pause\n");
+		e->ehk = 1;
+	}
+	if (e->ehk == 1 && keycode == 111)
+	{
+		printf("pause pas\n");
+		e->ehk = 0;
+	}
 	if (keycode == 65307)
 		exit(1);
-	if (keycode == 93)
+	if (keycode == 61)
 		e->v.it_max += 10;
-	if (e->v.it_max > 11 && keycode == 91)
+	if (e->v.it_max > 11 && keycode == 41)
 		e->v.it_max -= 10;
 	move_map(keycode, e);
 	expose_hook(e);

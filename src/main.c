@@ -42,6 +42,7 @@ int			main(int ac, char **av)
 {
 	static t_env	e;
 
+	e.ehk = 0;
 	e.v.c_c = 0;
 	e.v.zoom = 320;
 	e.v.it_max = 51;
