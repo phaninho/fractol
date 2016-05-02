@@ -1,0 +1,61 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: stmartin <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/03/04 14:21:39 by stmartin          #+#    #+#              #
+#    Updated: 2016/03/15 18:36:24 by stmartin         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRC_PATH = ./src/
+OBJ_PATH = ./obj/
+INC_PATH = ./include/ ./libft ./minilibx/
+LIB_PATH = ./libft/ ./minilibx/
+
+FRAMEWORK = -lXext -lX11 -lm
+
+SRC_NAME = main.c mlx_tools.c put_image.c
+
+OBJ_NAME = $(SRC_NAME:.c=.o)
+LIB_NAME = -lft -lmlx
+NAME = fractol
+
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
+LIB = $(addprefix -L,$(LIB_PATH))
+
+CC = gcc -g
+CFLAGS = -Wall -Wextra -Werror
+
+all: lib
+	@echo "\033[37;44m Make $(NAME) \033[0m"
+	@make $(NAME)
+
+$(NAME): $(OBJ)
+		$(CC) $(INC) $^ -o $@ $(LIB) $(LIB_NAME) $(FRAMEWORK)
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir -p $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $< $(LIB) $(LIB_NAME) 
+.PHONY: lib clean fclean re
+
+lib:
+	@echo "\033[37;44m Make libft \033[0m"
+	@make -C ./libft/
+	@echo "\033[37;44m Make minilibx \033[0m"
+	@make -C ./minilibx/
+
+clean:
+	rm -rf $(OBJ) $(OBJ_PATH)
+
+fclean: clean
+	rm -f $(NAME)
+	@make -C ./libft/ fclean
+	@make -C ./minilibx/ clean
+
+re: fclean
+	@$(MAKE) all
