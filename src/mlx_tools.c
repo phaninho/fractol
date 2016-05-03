@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/02 20:02:04 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/03 16:40:37 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void			fractal(t_env *e, int i)
 {
 	float	tmp;
 
-	printf("retour x1: %f x2: %f\ny1: %f y2: %f\n", e->v.x1, e->v.x2, e->v.y1, e->v.y2);
 	e->v.y = 0;
 	while (e->v.y < WIN_Y)
 	{
@@ -88,7 +87,6 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 	t.ty2 = e->v.y2;
 	x1 = xinit(e, x);
 	y1 = yinit(e, y);
-	printf("bt %d x: %d y: %d\n", button, x, y);
 	if (button == 5 && e->v.zoom < 30000000)
 	{
 		e->v.zoom *= 1.1;
@@ -98,7 +96,6 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 		e->v.x2 = x1 + ((t.tx2 - t.tx1) / 4);
 		e->v.y1 = y1 - ((t.ty2 - t.ty1) / 4);
 		e->v.y2 = y1 + ((t.ty2 - t.ty1) / 4);
-		printf("test x1: %f x2: %f\ny1: %f y2: %f\n", e->v.x1, e->v.x2, e->v.y1, e->v.y2);
 		//e->v.x += 100; /*e->v.x / e->v.zoom / 2.51*/
 		//e->v.y += 100; /*e->v.y / e->v.zoom / 2.51*/
 	}
@@ -113,13 +110,29 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 
 int				mouse_motion(int x, int y, t_env *e)
 {
-	(void)e;
 	if (x > 0 && x < WIN_X && y > 0 && y < WIN_Y)
 	{
 		e->msx = x - (WIN_X / 2);
 		e->msy = y - (WIN_Y / 2);
 	}
-	expose_hook(e);
+	if (e->ehk == 0)
+	{
+		e->tx = 0;
+		expose_hook(e);
+	}
+	if (e->ehk == 1)
+	{
+		if(e->tx == 0)
+		{
+			e->tx = e->msx;
+			e->ty = e->msy;
+		}
+		else
+		{
+			e->msx = e->tx;
+			e->msy = e->ty;
+		}
+	}
 	return (0);
 }
 
@@ -129,6 +142,10 @@ int				key_hook(int keycode, void *env)
 	t_env	*e;
 	e = (t_env *)env;
 
+	if (keycode == 35)
+		e->ehk = 1;
+	if (keycode == 31)
+		e->ehk = 0;
 	if (keycode == 53)
 		exit(1);
 	if (keycode == 24)

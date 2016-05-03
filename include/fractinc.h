@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/02 19:10:14 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/03 16:34:31 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <mlx.h>
 # include <stdlib.h>
 
-# define WIN_X 400
-# define WIN_Y 400 / 16 * 9
+# define WIN_X 1000
+# define WIN_Y 1000 / 16 * 9
 
 typedef struct			s_image
 {
@@ -71,6 +71,8 @@ typedef struct			s_env
 	int			color;
 	double		msx;
 	double		msy;
+	double		tx;
+	double		ty;
 }						t_env;
 
 int				mouse_hook(int button, int x, int y, t_env *param);
