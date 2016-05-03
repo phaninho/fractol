@@ -87,7 +87,7 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 	t.ty2 = e->v.y2;
 	x1 = xinit(e, x);
 	y1 = yinit(e, y);
-	if (button == 1 && e->v.zoom < 30000000)
+	if (button == 5 && e->v.zoom < 30000000)
 	{
 		e->v.zoom *= 1.1;
 		//e->ctx = x / 2;
@@ -99,7 +99,7 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 		//e->v.x += 100; /*e->v.x / e->v.zoom / 2.51*/
 		//e->v.y += 100; /*e->v.y / e->v.zoom / 2.51*/
 	}
-	if (button == 3 && e->v.zoom > 50)
+	if (button == 4 && e->v.zoom > 50)
 		e->v.zoom /= 1.1;
 	(void)x;
 	(void)y;
@@ -110,32 +110,39 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 
 int				mouse_motion(int x, int y, t_env *e)
 {
-	(void)e;
 	if (x > 0 && x < WIN_X && y > 0 && y < WIN_Y)
 	{
 		e->msx = x - (WIN_X / 2);
 		e->msy = y - (WIN_Y / 2);
 	}
-	if (!e->ehk)
+	if (e->ehk == 0)
+	{
+		e->tx = 0;
 		expose_hook(e);
+	}
+	if (e->ehk == 1)
+	{
+		if(e->tx == 0)
+		{
+			e->tx = e->msx;
+			e->ty = e->msy;
+		}
+		else
+		{
+			e->msx = e->tx;
+			e->msy = e->ty;
+		}
+	}
 	return (0);
 }
 
-int				key_hook(int keycode, void *env)
+int				key_hook(int keycode, t_env *e)
 {
-		printf("%d\n", keycode);
-	t_env	*e;
-	e = (t_env *)env;
-	if (e->ehk == 0 && keycode == 112)
-	{
-		printf("pause\n");
+
+	if (keycode == 112)
 		e->ehk = 1;
-	}
-	if (e->ehk == 1 && keycode == 111)
-	{
-		printf("pause pas\n");
+	if (keycode == 111)
 		e->ehk = 0;
-	}
 	if (keycode == 65307)
 		exit(1);
 	if (keycode == 61)

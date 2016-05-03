@@ -136,12 +136,9 @@ int				mouse_motion(int x, int y, t_env *e)
 	return (0);
 }
 
-int				key_hook(int keycode, void *env)
+int				key_hook(int keycode, t_env *e)
 {
 	printf("%d\n", keycode);
-	t_env	*e;
-	e = (t_env *)env;
-
 	if (keycode == 35)
 		e->ehk = 1;
 	if (keycode == 31)

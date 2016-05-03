@@ -19,8 +19,8 @@
 # include <mlx.h>
 # include <stdlib.h>
 
-# define WIN_X 1000
-# define WIN_Y 1000 / 16 * 9
+# define WIN_X 600
+# define WIN_Y 600 / 16 * 9
 
 typedef struct			s_image
 {
@@ -78,7 +78,7 @@ typedef struct			s_env
 int				mouse_hook(int button, int x, int y, t_env *param);
 int				mouse_motion(int x, int y, t_env *param);
 unsigned long	colorrgb(int r, int g, int b);
-int				key_hook(int keycode, void *env);
+int				key_hook(int keycode, t_env *env);
 int				expose_hook(t_env *e);
 void			image_put_pixel(t_image *i, int x, int y, unsigned long color);
 void			julia(t_env *e);
