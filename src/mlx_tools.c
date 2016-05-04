@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/03 16:40:37 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/04 17:48:27 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void			fractal(t_env *e, int i)
 {
-	float	tmp;
+	double	tmp;
 
 	e->v.y = 0;
 	while (e->v.y < WIN_Y)
@@ -30,7 +30,10 @@ void			fractal(t_env *e, int i)
 			i = 0;
 			while (e->v.z_r * e->v.z_r + e->v.z_i * e->v.z_i < 4 && i < e->v.it_max)
 			{
-				e->ret == 2 ? mandelbrot(e) : julia(e);
+				if (e->ret == 1 || e->ret == 2)
+					e->ret == 2 ? mandelbrot(e) : julia(e);
+				else
+					myfractal(e);
 				tmp = e->v.z_r;
 				e->v.z_r = e->v.z_r * e->v.z_r  - e->v.z_i * e->v.z_i + e->v.c_r;
 				e->v.z_i = 2 * e->v.z_i * tmp + e->v.c_i;
@@ -77,7 +80,7 @@ float			yinit(t_env *e, int y)
 
 int				mouse_hook(int button, int x, int y, t_env *e)
 {
-	float		x1;
+	/*float		x1;
 	float		y1;
 	t_tmp		t;
 
@@ -86,16 +89,16 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 	t.ty1 = e->v.y1;
 	t.ty2 = e->v.y2;
 	x1 = xinit(e, x);
-	y1 = yinit(e, y);
-	if (button == 5 && e->v.zoom < 30000000)
+	y1 = yinit(e, y);*/
+	if (button == 5 && e->v.zoom < 30000000000)
 	{
 		e->v.zoom *= 1.1;
 		//e->ctx = x / 2;
 		//e->cty = y / 2;
-		e->v.x1 = x1 - ((t.tx2 - t.tx1) / 4);
-		e->v.x2 = x1 + ((t.tx2 - t.tx1) / 4);
-		e->v.y1 = y1 - ((t.ty2 - t.ty1) / 4);
-		e->v.y2 = y1 + ((t.ty2 - t.ty1) / 4);
+	//	e->v.x1 = x1 - ((t.tx2 - t.tx1) / 4);
+	//	e->v.x2 = x1 + ((t.tx2 - t.tx1) / 4);
+	//	e->v.y1 = y1 - ((t.ty2 - t.ty1) / 4);
+	//	e->v.y2 = y1 + ((t.ty2 - t.ty1) / 4);
 		//e->v.x += 100; /*e->v.x / e->v.zoom / 2.51*/
 		//e->v.y += 100; /*e->v.y / e->v.zoom / 2.51*/
 	}
@@ -110,28 +113,14 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 
 int				mouse_motion(int x, int y, t_env *e)
 {
-	if (x > 0 && x < WIN_X && y > 0 && y < WIN_Y)
-	{
-		e->msx = x - (WIN_X / 2);
-		e->msy = y - (WIN_Y / 2);
-	}
-	if (e->ehk == 0)
-	{
-		e->tx = 0;
-		expose_hook(e);
-	}
 	if (e->ehk == 1)
 	{
-		if(e->tx == 0)
+		if (x > 0 && x < WIN_X && y > 0 && y < WIN_Y)
 		{
-			e->tx = e->msx;
-			e->ty = e->msy;
+			e->msx = x - (WIN_X / 2);
+			e->msy = y - (WIN_Y / 2);
 		}
-		else
-		{
-			e->msx = e->tx;
-			e->msy = e->ty;
-		}
+	expose_hook(e);
 	}
 	return (0);
 }
@@ -140,9 +129,9 @@ int				key_hook(int keycode, t_env *e)
 {
 	printf("%d\n", keycode);
 	if (keycode == 35)
-		e->ehk = 1;
-	if (keycode == 31)
 		e->ehk = 0;
+	if (keycode == 31)
+		e->ehk = 1;
 	if (keycode == 53)
 		exit(1);
 	if (keycode == 24)

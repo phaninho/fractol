@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/02 18:54:45 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/04 17:49:10 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ int			check_arg(char **av)
 	ret = 0;
 	if (!ft_strcmp(av[1], "julia"))
 		ret = 1;
-	if (!ft_strcmp(av[1], "mandel"))
+	else if (!ft_strcmp(av[1], "mandel"))
 		ret = 2;
+	else if (!ft_strcmp(av[1], "myfractal"))
+		ret = 3;
 	return (ret);
 }
 
@@ -54,11 +56,13 @@ int			main(int ac, char **av)
 			julia(&e);
 		if (e.ret == 2)
 			mandelbrot(&e);
+		if (e.ret == 3)
+			myfractal(&e);
 		call_fonction(e);
 	}
 	else
 	{
-		ft_putendl("Usage : ./fractol [julia, mandel, ...]");
+		ft_putendl("Usage : ./fractol [julia, mandel, myfractal]");
 		return (0);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/03 16:34:31 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/04 17:14:18 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <mlx.h>
 # include <stdlib.h>
 
-# define WIN_X 600
-# define WIN_Y 600 / 16 * 9
+# define WIN_X 1000
+# define WIN_Y 1000 / 16 * 9
 
 typedef struct			s_image
 {
@@ -34,26 +34,26 @@ typedef struct			s_image
 typedef struct			s_co
 {
 	int			it_max;
-	float		zoom;
+	double		zoom;
 	int			x;
 	int			y;
-	float		x1;
-	float		x2;
-	float		y1;
-	float		y2;
-	float		c_r;
-	float		c_i;
-	float		z_r;
-	float		z_i;
-	float		c_c;
+	double		x1;
+	double		x2;
+	double		y1;
+	double		y2;
+	double		c_r;
+	double		c_i;
+	double		z_r;
+	double		z_i;
+	double		c_c;
 }						t_co;
 
 typedef struct			s_tmp
 {
-	float		tx1;
-	float		tx2;
-	float		ty1;
-	float		ty2;
+	double		tx1;
+	double		tx2;
+	double		ty1;
+	double		ty2;
 }						t_tmp;
 
 typedef struct			s_env
@@ -62,8 +62,8 @@ typedef struct			s_env
 	int			ret;
 	int			ctx;
 	int			cty;
-	float		mx;
-	float		my;
+	double		mx;
+	double		my;
 	void		*mlx;
 	void		*win;
 	t_image		img;
@@ -83,5 +83,5 @@ int				expose_hook(t_env *e);
 void			image_put_pixel(t_image *i, int x, int y, unsigned long color);
 void			julia(t_env *e);
 void			mandelbrot(t_env *e);
-
+void			myfractal(t_env *e);
 #endif
