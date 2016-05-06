@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 22:15:24 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 22:43:29 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct			s_tmp
 
 typedef struct			s_env
 {
+	int			col;
 	double		zx;
 	double		zy;
 	int			ehk;
@@ -76,7 +77,7 @@ typedef struct			s_env
 
 int				mouse_hook(int button, int x, int y, t_env *param);
 int				mouse_motion(int x, int y, t_env *param);
-unsigned long	colorrgb(int r, int g, int b);
+unsigned long	colrgb(int color, int r, int g, int b);
 int				key_hook(int keycode, t_env *env);
 int				expose_hook(t_env *e);
 void			image_put_pixel(t_image *i, int x, int y, unsigned long color);

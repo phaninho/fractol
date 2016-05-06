@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 22:17:28 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 22:54:51 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void			fractal(t_env *e, int i)
 			if (i == e->v.it_max)
 				image_put_pixel(&(e->img), e->v.x, e->v.y, 0);
 			else
-				image_put_pixel(&(e->img), e->v.x, e->v.y, colorrgb(i * 255 /
-				e->v.it_max, i * 255 / e->v.it_max, i * 255 / e->v.it_max));
+				image_put_pixel(&(e->img), e->v.x, e->v.y, colrgb(e->col, i *
+			255 / e->v.it_max, i * 255 / e->v.it_max, i * 255 / e->v.it_max));
 			e->v.x++;
 		}
 		e->v.y++;
@@ -87,7 +87,6 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 	return (0);
 }
 
-
 int				mouse_motion(int x, int y, t_env *e)
 {
 	if (e->ehk == 1)
@@ -104,15 +103,20 @@ int				mouse_motion(int x, int y, t_env *e)
 
 int				key_hook(int keycode, t_env *e)
 {
-	if (keycode == 35)
+	printf("%d\n", keycode);
+	if (keycode == 12)
+		e->col++;
+	else if (keycode == 0)
+		e->col--;
+	else if (keycode == 35)
 		e->ehk = 0;
-	if (keycode == 31)
+	else if (keycode == 31)
 		e->ehk = 1;
-	if (keycode == 53)
+	else if (keycode == 53)
 		exit(1);
-	if (keycode == 24)
+	else if (keycode == 24)
 		e->v.it_max += 10;
-	if (e->v.it_max > 11 && keycode == 27)
+	else if (e->v.it_max > 11 && keycode == 27)
 		e->v.it_max -= 10;
 	move_map(keycode, e);
 	change_fractal(keycode, e);
@@ -133,11 +137,22 @@ static void		clear_image(t_env *e)
 	}
 }
 
+void			put_instruction(t_env *e)
+{
+
+	mlx_string_put(e->mlx, e->win, 5, 5, 0xffffff, "+ | -  : change iteration");
+	mlx_string_put(e->mlx, e->win, 5, 20, 0xffffff, "p | o : pause / unpause");
+	mlx_string_put(e->mlx, e->win, 5, 35, 0xffffff, "scroll: zoom");
+	mlx_string_put(e->mlx, e->win, 5, 50, 0xffffff, "arrow : move");
+	mlx_string_put(e->mlx, e->win, 5, 65, 0xffffff, "q | a : change color");
+}
+
 int				expose_hook(t_env *e)
 {
 	clear_image(e);
 	fractal(e, 0);
 	mlx_clear_window(e->mlx, e->win);
 	mlx_put_image_to_window(e->mlx, e->win, e->img.i, 0, 0);
+	put_instruction(e);
 	return (0);
 }
