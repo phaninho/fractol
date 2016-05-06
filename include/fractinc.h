@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 19:49:07 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 21:38:55 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct			s_co
 	double		c_i;
 	double		z_r;
 	double		z_i;
-	double		c_c;
 }						t_co;
 
 typedef struct			s_tmp
@@ -58,6 +57,8 @@ typedef struct			s_tmp
 
 typedef struct			s_env
 {
+	double		zx;
+	double		zy;
 	int			ehk;
 	int			ret;
 	double		mx;

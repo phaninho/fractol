@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 19:49:31 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 21:44:40 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,36 +64,25 @@ void			move_map(int keycode, t_env *e)
 
 int				mouse_hook(int button, int x, int y, t_env *e)
 {
+	double	lax;
+	double	lay;
 
-	/*float		x1;
-	float		y1;
-	t_tmp		t;
-
-	t.tx1 = e->v.x1;
-	t.tx2 = e->v.x2;
-	t.ty1 = e->v.y1;
-	t.ty2 = e->v.y2;
-	x1 = xinit(e, x);
-	y1 = yinit(e, y);*/
-	if (button == 5 && e->v.zoom < 300000000000000)
+	if (button == 5)
 	{
-		double lax = (x / e->v.zoom) + e->v.x1;
-		double lay = (y / e->v.zoom) + e->v.y1;
+		lax = (x / e->v.zoom) + e->v.x1;
+		lay = (y / e->v.zoom) + e->v.y1;
 		e->v.zoom *= 1.1;
 		e->v.x1 = lax - (x / e->v.zoom);
 		e->v.y1 = lay - (y / e->v.zoom);
-		//e->ctx = x / 2;
-		//e->cty = y / 2;
-	//	e->v.x1 = x1 - ((t.tx2 - t.tx1) / 4);
-	//	e->v.x2 = x1 + ((t.tx2 - t.tx1) / 4);
-	//	e->v.y1 = y1 - ((t.ty2 - t.ty1) / 4);
-	//	e->v.y2 = y1 + ((t.ty2 - t.ty1) / 4);
-		//e->v.x += 100; /*e->v.x / e->v.zoom / 2.51*/
-		//e->v.y += 100; /*e->v.y / e->v.zoom / 2.51*/
 	}
-	printf(" x = %d, y = %d\n ", x, y);
 	if (button == 4 && e->v.zoom > 50)
+	{
+		lax = (x / e->v.zoom) + e->v.x1;
+		lay = (y / e->v.zoom) + e->v.y1;
 		e->v.zoom /= 1.1;
+		e->v.x1 = lax - (x / e->v.zoom);
+		e->v.y1 = lay - (y / e->v.zoom);
+	}
 	expose_hook(e);
 	return (0);
 }
@@ -115,7 +104,6 @@ int				mouse_motion(int x, int y, t_env *e)
 
 int				key_hook(int keycode, t_env *e)
 {
-	printf("%d\n", keycode);
 	if (keycode == 35)
 		e->ehk = 0;
 	if (keycode == 31)
