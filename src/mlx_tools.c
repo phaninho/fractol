@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/04 17:48:27 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 19:49:31 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,9 @@ void			move_map(int keycode, t_env *e)
 		e->mx -= 100 / e->v.zoom;
 }
 
-float			xinit(t_env *e, int x)
-{
-	float		newx;
-
-	newx = (((e->v.x2 - e->v.x1) * x) / WIN_X) + e->v.x1;
-	return (newx);
-}
-
-float			yinit(t_env *e, int y)
-{
-	float		newy;
-
-	newy = (((e->v.y2 - e->v.y1) * y) / WIN_Y) + e->v.y1;
-	return (newy);
-}
-
 int				mouse_hook(int button, int x, int y, t_env *e)
 {
+
 	/*float		x1;
 	float		y1;
 	t_tmp		t;
@@ -90,9 +75,13 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 	t.ty2 = e->v.y2;
 	x1 = xinit(e, x);
 	y1 = yinit(e, y);*/
-	if (button == 5 && e->v.zoom < 30000000000)
+	if (button == 5 && e->v.zoom < 300000000000000)
 	{
+		double lax = (x / e->v.zoom) + e->v.x1;
+		double lay = (y / e->v.zoom) + e->v.y1;
 		e->v.zoom *= 1.1;
+		e->v.x1 = lax - (x / e->v.zoom);
+		e->v.y1 = lay - (y / e->v.zoom);
 		//e->ctx = x / 2;
 		//e->cty = y / 2;
 	//	e->v.x1 = x1 - ((t.tx2 - t.tx1) / 4);
@@ -102,10 +91,9 @@ int				mouse_hook(int button, int x, int y, t_env *e)
 		//e->v.x += 100; /*e->v.x / e->v.zoom / 2.51*/
 		//e->v.y += 100; /*e->v.y / e->v.zoom / 2.51*/
 	}
+	printf(" x = %d, y = %d\n ", x, y);
 	if (button == 4 && e->v.zoom > 50)
 		e->v.zoom /= 1.1;
-	(void)x;
-	(void)y;
 	expose_hook(e);
 	return (0);
 }
@@ -120,7 +108,7 @@ int				mouse_motion(int x, int y, t_env *e)
 			e->msx = x - (WIN_X / 2);
 			e->msy = y - (WIN_Y / 2);
 		}
-	expose_hook(e);
+		expose_hook(e);
 	}
 	return (0);
 }

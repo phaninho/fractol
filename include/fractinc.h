@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/04 17:14:18 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 19:49:07 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ typedef struct			s_env
 {
 	int			ehk;
 	int			ret;
-	int			ctx;
-	int			cty;
 	double		mx;
 	double		my;
 	void		*mlx;
