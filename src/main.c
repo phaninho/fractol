@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 21:40:02 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 22:07:09 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,6 @@ void		call_fonction(t_env e)
 	mlx_loop(e.mlx);
 }
 
-void		init_xy1(t_env *e)
-{
-	if (e->ret == 1 || e->ret == 3)
-	{
-		e->v.x1 = -1.6;
-		e->v.y1 = -0.95;
-	}
-	else if (e->ret == 2)
-	{
-		e->v.x1 = -2.2;
-		e->v.y1 = -0.95;
-	}
-}
 
 int			check_arg(char **av)
 {
@@ -62,13 +49,7 @@ int			main(int ac, char **av)
 	e.v.it_max = 51;
 	if (ac == 2 && (e.ret = check_arg(av)))
 	{
-		if (e.ret == 1)
-			julia(&e);
-		if (e.ret == 2)
-			mandelbrot(&e);
-		if (e.ret == 3)
-			myfractal(&e);
-		init_xy1(&e);
+		init_fractal(&e);
 		call_fonction(e);
 	}
 	else

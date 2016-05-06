@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 21:38:55 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 22:15:24 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,7 @@ void			image_put_pixel(t_image *i, int x, int y, unsigned long color);
 void			julia(t_env *e);
 void			mandelbrot(t_env *e);
 void			myfractal(t_env *e);
+void			init_fractal(t_env *e);
+void			change_fractal(int keycode, t_env *e);
+
 #endif

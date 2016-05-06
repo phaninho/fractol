@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 21:44:40 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/06 22:17:28 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int				key_hook(int keycode, t_env *e)
 	if (e->v.it_max > 11 && keycode == 27)
 		e->v.it_max -= 10;
 	move_map(keycode, e);
+	change_fractal(keycode, e);
 	expose_hook(e);
 	return (0);
 }
