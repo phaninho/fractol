@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 22:43:29 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/07 14:36:12 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ void			mandelbrot(t_env *e);
 void			myfractal(t_env *e);
 void			init_fractal(t_env *e);
 void			change_fractal(int keycode, t_env *e);
+void			fractal(t_env *e, int i);
+void			move_map(int keycode, t_env *e);
+int				mouse_hook(int button, int x, int y, t_env *e);
 
 #endif
