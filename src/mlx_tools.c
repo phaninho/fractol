@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 18:05:00 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 22:40:01 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ static void		clear_image(t_env *e)
 
 void			put_instruction(t_env *e)
 {
-	mlx_string_put(e->mlx, e->win, 5, 5, 0xffffff, "+ | -  : change iteration");
-	mlx_string_put(e->mlx, e->win, 5, 21, 0xffffff, "p | o : pause on / off");
-	mlx_string_put(e->mlx, e->win, 5, 37, 0xffffff, "scroll: zoom");
-	mlx_string_put(e->mlx, e->win, 5, 53, 0xffffff, "arrow : move");
-	mlx_string_put(e->mlx, e->win, 5, 69, 0xffffff, "q | a : change color");
-	mlx_string_put(e->mlx, e->win, 5, 85, 0xffffff, "1 | 2 | 3 : change map");
+	mlx_string_put(e->mlx, e->win, 5, 5, 0xffffff, "+ | - : change iteration");
+	mlx_string_put(e->mlx, e->win, 5, 23, 0xffffff, "p | o : pause on / off");
+	mlx_string_put(e->mlx, e->win, 5, 41, 0xffffff, "scroll: zoom");
+	mlx_string_put(e->mlx, e->win, 5, 59, 0xffffff, "arrow : move");
+	mlx_string_put(e->mlx, e->win, 5, 77, 0xffffff, "q | a : change color");
+	mlx_string_put(e->mlx, e->win, 5, 95, 0xffffff, "1 to 5 : change map");
 }
 
 int				expose_hook(t_env *e)

@@ -6,10 +6,10 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:34:37 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 20:24:39 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 21:48:58 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include "fractinc.h"
 
 void		julia(t_env *e)

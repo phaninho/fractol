@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 22:02:48 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 20:28:30 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 22:36:53 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,17 @@
 void		change_fractal(int keycode, t_env *e)
 {
 	if (keycode == 18)
+	{
+		e->msx = 0;
+		e->msy = 0;
 		e->ret = 1;
+	}
 	else if (keycode == 19)
+	{
+		e->msx = 0;
+		e->msy = 0;
 		e->ret = 2;
+	}
 	else if (keycode == 20)
 		e->ret = 3;
 	else if (keycode == 21)
@@ -28,17 +36,22 @@ void		change_fractal(int keycode, t_env *e)
 
 void		init_xy1(t_env *e)
 {
-	if (e->ret == 1 || e->ret == 3)
+	if (e->ret == 1)
 	{
 		e->v.x1 = -1.6;
 		e->v.y1 = -0.95;
 	}
-	else if (e->ret == 2)
+	else if (e->ret == 3)
+	{
+		e->v.x1 = -2.8;
+		e->v.y1 = -2;
+	}
+	else if (e->ret == 2 || e->ret == 4)
 	{
 		e->v.x1 = -2.2;
 		e->v.y1 = -0.95;
 	}
-	else if (e->ret == 5)
+	else if ( e->ret == 5)
 	{
 		e->v.x1 = -1.6;
 		e->v.y1 = -0.75;
