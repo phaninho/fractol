@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 14:26:13 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 19:18:03 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 20:04:08 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,12 @@ void			wich_fractal(t_env *e)
 {
 	if (e->ret == 1 || e->ret == 2)
 		e->ret == 2 ? mandelbrot(e) : julia(e);
-	else
+	else if (e->ret == 3)
 		burning_ship(e);
+	else if (e->ret == 4)
+		space(e);
+	else if (e->ret == 5)
+		celtic(e);
 }
 
 void			fractal(t_env *e, int i)
@@ -78,7 +82,7 @@ void			fractal(t_env *e, int i)
 				i++;
 			}
 			choose_color(i, e);
-						e->v.x++;
+			e->v.x++;
 		}
 		e->v.y++;
 	}

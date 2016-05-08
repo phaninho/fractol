@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 19:16:56 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 19:24:07 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ typedef struct			s_env
 	double		ty;
 }						t_env;
 
+void			space(t_env *e);
+void			celtic(t_env *e);
 void			choose_color(int i, t_env *e);
 void			z_out_init(t_env *e);
 void			z_in_init(t_env *e, double tmp);
