@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 19:42:35 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 20:29:01 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			check_arg(char **av)
 		ret = 3;
 	else if (!ft_strcmp(av[1], "space"))
 		ret = 4;
-	else if (!ft_strcmp(av[1], "celtic"))
+	else if (!ft_strcmp(av[1], "uter"))
 		ret = 5;
 	return (ret);
 }
@@ -49,7 +49,7 @@ int			main(int ac, char **av)
 {
 	static t_env	e;
 
-	e.v.zoom = 320;
+	e.v.zoom = 220;
 	e.v.it_max = 51;
 	if (ac == 2 && (e.ret = check_arg(av)))
 	{
@@ -58,7 +58,7 @@ int			main(int ac, char **av)
 	}
 	else
 	{
-		ft_putendl("Usage : ./fractol [julia, mandel, burni, space, celtic]");
+		ft_putendl("Usage : ./fractol [julia, mandel, burni, space, uter]");
 		return (0);
 	}
 	return (0);

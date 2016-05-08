@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 22:02:48 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 20:05:24 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 20:28:30 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void		init_xy1(t_env *e)
 		e->v.x1 = -2.2;
 		e->v.y1 = -0.95;
 	}
+	else if (e->ret == 5)
+	{
+		e->v.x1 = -1.6;
+		e->v.y1 = -0.75;
+	}
 }
 
 void		init_fractal(t_env *e)
@@ -51,6 +56,6 @@ void		init_fractal(t_env *e)
 	else if (e->ret == 4)
 		space(e);
 	else if (e->ret == 5)
-		celtic(e);
+		uter(e);
 	init_xy1(e);
 }

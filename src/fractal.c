@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:34:37 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 19:48:21 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 20:24:39 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -36,7 +36,7 @@ void		space(t_env *e)
 	e->v.c_i = 0.143250;
 }
 
-void		celtic(t_env *e)
+void		uter(t_env *e)
 {
 	e->v.c_r = e->v.x / e->v.zoom + e->v.x1 + e->mx + (e->msx / 100);
 	e->v.c_i = e->v.y / e->v.zoom + e->v.y1 + e->my + (e->msy / 100);
