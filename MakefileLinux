@@ -17,7 +17,7 @@ LIB_PATH = ./libft/ ./minilibx/
 
 FRAMEWORK = -lXext -lX11 -lm
 
-SRC_NAME = main.c mlx_tools_lin.c put_image.c fractal.c
+SRC_NAME = main.c mlx_tools_linux.c put_image.c fractal.c init_linux.c calcul_fractal_linux.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = -lft -lmlx
