@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 14:26:13 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/07 14:35:57 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 19:18:03 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void			wich_fractal(t_env *e)
 	if (e->ret == 1 || e->ret == 2)
 		e->ret == 2 ? mandelbrot(e) : julia(e);
 	else
-		myfractal(e);
+		burning_ship(e);
 }
 
 void			fractal(t_env *e, int i)
@@ -67,23 +67,18 @@ void			fractal(t_env *e, int i)
 		e->v.x = 0;
 		while(e->v.x < WIN_X)
 		{
-			e->v.z_r = e->v.x / e->v.zoom + e->v.x1 + e->mx;
-			e->v.z_i = e->v.y / e->v.zoom + e->v.y1 + e->my;
+			z_out_init(e);
 			i = 0;
-			while (e->v.z_r * e->v.z_r + e->v.z_i * e->v.z_i < 4 && i < e->v.it_max)
+			while (e->v.z_r * e->v.z_r + e->v.z_i * e->v.z_i < 4 &&
+					i < e->v.it_max)
 			{
 				wich_fractal(e);
-								tmp = e->v.z_r;
-				e->v.z_r = e->v.z_r * e->v.z_r  - e->v.z_i * e->v.z_i + e->v.c_r;
-				e->v.z_i = 2 * e->v.z_i * tmp + e->v.c_i;
+				tmp = e->v.z_r;
+				z_in_init(e, tmp);
 				i++;
 			}
-			if (i == e->v.it_max)
-				image_put_pixel(&(e->img), e->v.x, e->v.y, 0);
-			else
-				image_put_pixel(&(e->img), e->v.x, e->v.y, colrgb(e->col, i *
-			255 / e->v.it_max, i * 255 / e->v.it_max, i * 255 / e->v.it_max));
-			e->v.x++;
+			choose_color(i, e);
+						e->v.x++;
 		}
 		e->v.y++;
 	}

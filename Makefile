@@ -6,7 +6,7 @@
 #    By: stmartin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/04 14:21:39 by stmartin          #+#    #+#              #
-#    Updated: 2016/05/07 14:29:35 by stmartin         ###   ########.fr        #
+#    Updated: 2016/05/08 19:16:28 by stmartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ LIB_PATH = ./libft/ ./minilibx_macos/
 
 FRAMEWORK = -framework OpenGL -framework Appkit
 
-SRC_NAME = main.c mlx_tools.c put_image.c fractal.c init.c calcul_fractal.c
+SRC_NAME = main.c mlx_tools.c put_image.c fractal.c init.c calcul_fractal.c \
+		   z_init.c color.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 LIB_NAME = -lft -lmlx

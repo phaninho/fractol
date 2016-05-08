@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 22:02:48 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 22:22:21 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 17:21:53 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void		init_fractal(t_env *e)
 	if (e->ret == 2)
 		mandelbrot(e);
 	if (e->ret == 3)
-		myfractal(e);
+		burning_ship(e);
 	init_xy1(e);
 }

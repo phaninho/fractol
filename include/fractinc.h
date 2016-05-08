@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/07 14:36:12 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 19:16:56 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ typedef struct			s_env
 	double		ty;
 }						t_env;
 
+void			choose_color(int i, t_env *e);
+void			z_out_init(t_env *e);
+void			z_in_init(t_env *e, double tmp);
 int				mouse_hook(int button, int x, int y, t_env *param);
 int				mouse_motion(int x, int y, t_env *param);
 unsigned long	colrgb(int color, int r, int g, int b);
@@ -83,7 +86,7 @@ int				expose_hook(t_env *e);
 void			image_put_pixel(t_image *i, int x, int y, unsigned long color);
 void			julia(t_env *e);
 void			mandelbrot(t_env *e);
-void			myfractal(t_env *e);
+void			burning_ship(t_env *e);
 void			init_fractal(t_env *e);
 void			change_fractal(int keycode, t_env *e);
 void			fractal(t_env *e, int i);

@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 23:20:11 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 18:41:58 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/08 18:42:08 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_double_abs(int nb)
+double		ft_double_abs(double nb)
 {
 	return(nb < 0 ? nb * -1 : nb);
 }
