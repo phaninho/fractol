@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 15:28:44 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 17:46:29 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,16 @@ int			check_arg(char **av)
 		ret = 2;
 	else if (!ft_strcmp(av[1], "burn"))
 		ret = 3;
-	else if (!ft_strcmp(av[1], "tricorn"))
+	else if (!ft_strcmp(av[1], "tri"))
 		ret = 4;
 	else if (!ft_strcmp(av[1], "uter"))
 		ret = 5;
 	else if (!ft_strcmp(av[1], "bird"))
 		ret = 6;
+	else if (!ft_strcmp(av[1], "cam"))
+		ret = 7;
+	else if (!ft_strcmp(av[1], "bio"))
+		ret = 8;
 	return (ret);
 }
 
@@ -60,7 +64,7 @@ int			main(int ac, char **av)
 	}
 	else
 	{
-		ft_putendl("Usage : ./fractol [julia, mandel, burn, tricorn, uter, bird]");
+		ft_putendl("Use: ./fractol[julia, mandel, burn, tri, uter, bird, cam, bio]");
 		return (0);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 14:26:13 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 15:07:25 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 17:37:08 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,10 @@ void			move_map(int keycode, t_env *e)
 
 void			wich_fractal(t_env *e)
 {
-	//if (e->ret == 1 || e->ret == 2)
+	if (e->ret >= 1 && e->ret <= 6)
 		e->ret == 1 ? julia(e) : uter(e);
-//	else if (e->ret == 3)
-//		burning_ship(e);
-//	else if (e->ret == 4)
-//		space(e);
-//	else if (e->ret == 5)
-//		uter(e);
+	else
+		julia(e);
 }
 
 void			fractal(t_env *e, int i)

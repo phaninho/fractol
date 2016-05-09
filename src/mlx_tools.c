@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 14:46:47 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 17:59:09 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int				mouse_motion(int x, int y, t_env *e)
 
 int				key_hook(int keycode, t_env *e)
 {
-	printf("%d\n", keycode);
 	if (keycode == 12)
 		e->col++;
 	else if (keycode == 0)
@@ -69,7 +68,7 @@ void			put_instruction(t_env *e)
 	mlx_string_put(e->mlx, e->win, 5, 41, 0xffffff, "scroll: zoom");
 	mlx_string_put(e->mlx, e->win, 5, 59, 0xffffff, "arrow : move");
 	mlx_string_put(e->mlx, e->win, 5, 77, 0xffffff, "q | a : change color");
-	mlx_string_put(e->mlx, e->win, 5, 95, 0xffffff, "1 to 5 : change map");
+	mlx_string_put(e->mlx, e->win, 5, 95, 0xffffff, "1 to 7 : change map");
 }
 
 int				expose_hook(t_env *e)
