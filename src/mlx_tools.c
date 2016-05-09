@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 17:59:09 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 18:02:17 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void			put_instruction(t_env *e)
 	mlx_string_put(e->mlx, e->win, 5, 41, 0xffffff, "scroll: zoom");
 	mlx_string_put(e->mlx, e->win, 5, 59, 0xffffff, "arrow : move");
 	mlx_string_put(e->mlx, e->win, 5, 77, 0xffffff, "q | a : change color");
-	mlx_string_put(e->mlx, e->win, 5, 95, 0xffffff, "1 to 7 : change map");
+	mlx_string_put(e->mlx, e->win, 5, 95, 0xffffff, "1 to 8 : change map");
 }
 
 int				expose_hook(t_env *e)
