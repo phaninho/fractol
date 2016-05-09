@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 22:02:48 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 14:58:53 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 15:30:10 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void		change_fractal(int keycode, t_env *e)
 		e->ret = 4;
 	else if (keycode == 23)
 		e->ret = 5;
+	else if (keycode == 22)
+		e->ret = 6;
 }
 
 void		init_xy1(t_env *e)
@@ -62,13 +64,13 @@ void		init_fractal(t_env *e)
 {
 	if (e->ret == 1)
 		julia(e);
-	else if (e->ret == 2)
+	/*else if (e->ret == 2)
 		mandelbrot(e);
 	else if (e->ret == 3)
 		burning_ship(e);
 	else if (e->ret == 4)
-		tricorn(e);
-	else if (e->ret == 5)
+		tricorn(e);*/
+	else //if (e->ret == 5)
 		uter(e);
 	init_xy1(e);
 }
