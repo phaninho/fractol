@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 17:46:29 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 18:13:07 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int			main(int ac, char **av)
 	}
 	else
 	{
-		ft_putendl("Use: ./fractol[julia, mandel, burn, tri, uter, bird, cam, bio]");
+		ft_putendl("Use: ./fractol[julia, mandel, burn, tri,\
+ uter, bird, cam, bio]");
 		return (0);
 	}
 	return (0);
