@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 14:26:13 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 20:22:18 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 14:59:32 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			wich_fractal(t_env *e)
 	else if (e->ret == 3)
 		burning_ship(e);
 	else if (e->ret == 4)
-		space(e);
+		tricorn(e);
 	else if (e->ret == 5)
 		uter(e);
 }

@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 22:02:48 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 22:36:53 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 14:58:53 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		init_fractal(t_env *e)
 	else if (e->ret == 3)
 		burning_ship(e);
 	else if (e->ret == 4)
-		space(e);
+		tricorn(e);
 	else if (e->ret == 5)
 		uter(e);
 	init_xy1(e);

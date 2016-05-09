@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 22:40:01 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 14:46:47 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int				key_hook(int keycode, t_env *e)
 	expose_hook(e);
 	return (0);
 }
-
 
 static void		clear_image(t_env *e)
 {
