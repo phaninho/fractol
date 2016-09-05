@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 22:02:48 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 17:53:56 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 15:20:51 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractinc.h"
+#include <fractinc.h>
 
 void		change_fractal(int keycode, t_env *e)
 {
@@ -52,12 +52,12 @@ void		init_xy1(t_env *e)
 		e->v.x1 = -2.8;
 		e->v.y1 = -2;
 	}
-	else if (e->ret == 2 || e->ret == 4)
+	else if (e->ret == 2 || e->ret == 4 || e->ret == 8)
 	{
 		e->v.x1 = -2.2;
 		e->v.y1 = -0.95;
 	}
-	else if ( e->ret == 5 || e->ret == 6 || e->ret == 7 || e->ret == 8)
+	else if ( e->ret == 5 || e->ret == 6 || e->ret == 7)
 	{
 		e->v.x1 = -1.6;
 		e->v.y1 = -0.75;

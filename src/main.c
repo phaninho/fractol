@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 18:13:07 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 15:52:32 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractinc.h"
+#include <fractinc.h>
 
 void		call_fonction(t_env e)
 {
@@ -64,8 +64,8 @@ int			main(int ac, char **av)
 	}
 	else
 	{
-		ft_putendl("Use: ./fractol[julia, mandel, burn, tri,\
- uter, bird, cam, bio]");
+		ft_putendl("Use: ./fractol [julia, mandel, burn, tri,\
+uter, bird, cam, bio]");
 		return (0);
 	}
 	return (0);

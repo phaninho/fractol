@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 08:23:29 by stmartin          #+#    #+#             */
-/*   Updated: 2015/11/30 18:14:48 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 19:17:19 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	len;
 	size_t	i;
 
-	i = 0;
 	len = 0;
 	while (len < size && *dst && *(dst++))
 		len++;

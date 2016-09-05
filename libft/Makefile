@@ -6,7 +6,7 @@
 #    By: stmartin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/12 22:04:11 by stmartin          #+#    #+#              #
-#    Updated: 2016/05/08 19:18:54 by stmartin         ###   ########.fr        #
+#    Updated: 2016/05/10 15:56:20 by stmartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ INC_PATH = ./
 LIB_PATH = ./
 
 SRC_NAME = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_swap.c \
-		   ft_abs.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c \
-		   ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
+		   ft_double_abs.c ft_abs.c ft_memmove.c ft_memchr.c ft_memcmp.c \
+		   ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
 		   ft_strncat.c ft_strlcat.c ft_strchr.c ft_strrchr.c \
 		   ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c \
 		   ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
