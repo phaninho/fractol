@@ -6,12 +6,12 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 18:02:17 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/12 14:21:27 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "fractinc.h"
+#include <fractinc.h>
 
 int				mouse_motion(int x, int y, t_env *e)
 {
@@ -54,7 +54,7 @@ static void		clear_image(t_env *e)
 	int		y;
 
 	y = 0;
-	while(y <= e->img.szline * WIN_Y)
+	while (y <= e->img.szline * WIN_Y)
 	{
 		e->img.data[y] = 0;
 		y++;

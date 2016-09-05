@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:33:34 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/06 22:52:45 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 14:58:49 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractinc.h"
+#include <fractinc.h>
 #include <stdio.h>
 unsigned long	colrgb(int c, int r, int g, int b)
 {

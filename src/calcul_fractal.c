@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 14:26:13 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 17:37:08 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 14:57:34 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractinc.h"
+#include <fractinc.h>
 
 int				mouse_hook(int button, int x, int y, t_env *e)
 {

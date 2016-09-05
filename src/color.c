@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/08 19:12:33 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/08 19:16:07 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 14:57:56 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractinc.h"
+#include <fractinc.h>
 
 void		choose_color(int i, t_env *e)
 {

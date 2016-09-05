@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 17:55:20 by stmartin          #+#    #+#             */
-/*   Updated: 2015/12/18 19:01:56 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/09 19:16:57 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char		*ft_strtrim(char const *s)
 	size_t	len;
 	char	*str;
 
-	len = 0;
 	if (!s)
 		return (NULL);
 	while (*s && fk_isspace((int)*s) == 1)

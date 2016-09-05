@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/29 16:34:37 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/09 17:09:36 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 14:58:10 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractinc.h"
+#include <fractinc.h>
 
 void		julia(t_env *e)
 {
