@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 14:26:13 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/10 14:57:34 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 16:50:09 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractinc.h>
+#include "fractinc.h"
 
 int				mouse_hook(int button, int x, int y, t_env *e)
 {
@@ -65,7 +65,7 @@ void			fractal(t_env *e, int i)
 	while (e->v.y < WIN_Y)
 	{
 		e->v.x = 0;
-		while(e->v.x < WIN_X)
+		while (e->v.x < WIN_X)
 		{
 			z_out_init(e);
 			i = 0;

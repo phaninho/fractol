@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/08 18:54:20 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/10 15:23:45 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 16:51:39 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractinc.h>
+#include "fractinc.h"
 
 void			z_out_init(t_env *e)
 {

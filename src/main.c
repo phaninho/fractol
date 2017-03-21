@@ -6,11 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:37:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/10/07 16:08:12 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 16:51:03 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractinc.h>
+#include "fractinc.h"
 
 void		call_fonction(t_env e)
 {
@@ -21,11 +21,10 @@ void		call_fonction(t_env e)
 	mlx_mouse_hook(e.win, mouse_hook, &e);
 	mlx_hook(e.win, 6, 1L << 6, mouse_motion, &e);
 	mlx_hook(e.win, 2, 1L << 0, key_hook, &e);
-	e.img.data = mlx_get_data_addr(e.img.i, &(e.img.bpp), &(e.img.szline), 
+	e.img.data = mlx_get_data_addr(e.img.i, &(e.img.bpp), &(e.img.szline),
 			&(e.img.endian));
 	mlx_loop(e.mlx);
 }
-
 
 int			check_arg(char **av)
 {

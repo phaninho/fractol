@@ -6,7 +6,7 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 10:27:15 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/10 15:03:26 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 16:40:19 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
 # define WIN_X 1000
 # define WIN_Y 1000 / 16 * 9
 
-typedef struct			s_image
+typedef struct	s_image
 {
 	void		*i;
 	int			bpp;
 	int			szline;
 	int			endian;
 	char		*data;
-}						t_image;
+}				t_image;
 
-typedef struct			s_co
+typedef struct	s_co
 {
 	int			it_max;
 	double		zoom;
@@ -45,17 +45,17 @@ typedef struct			s_co
 	double		c_i;
 	double		z_r;
 	double		z_i;
-}						t_co;
+}				t_co;
 
-typedef struct			s_tmp
+typedef struct	s_tmp
 {
 	double		tx1;
 	double		tx2;
 	double		ty1;
 	double		ty2;
-}						t_tmp;
+}				t_tmp;
 
-typedef struct			s_env
+typedef struct	s_env
 {
 	int			col;
 	double		zx;
@@ -73,9 +73,8 @@ typedef struct			s_env
 	double		msy;
 	double		tx;
 	double		ty;
-}						t_env;
+}				t_env;
 
-//void			tricorn(t_env *e);
 void			uter(t_env *e);
 void			choose_color(int i, t_env *e);
 void			z_out_init(t_env *e);
@@ -87,8 +86,6 @@ int				key_hook(int keycode, t_env *env);
 int				expose_hook(t_env *e);
 void			image_put_pixel(t_image *i, int x, int y, unsigned long color);
 void			julia(t_env *e);
-//void			mandelbrot(t_env *e);
-//void			burning_ship(t_env *e);
 void			init_fractal(t_env *e);
 void			change_fractal(int keycode, t_env *e);
 void			fractal(t_env *e, int i);

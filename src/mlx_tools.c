@@ -6,12 +6,11 @@
 /*   By: stmartin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 13:16:50 by stmartin          #+#    #+#             */
-/*   Updated: 2016/05/12 14:21:27 by stmartin         ###   ########.fr       */
+/*   Updated: 2016/05/10 16:51:17 by stmartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fractinc.h>
+#include "fractinc.h"
 
 int				mouse_motion(int x, int y, t_env *e)
 {
